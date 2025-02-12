@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Pacifico', cursive;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="text-center relative">
+        <h1 class="text-5xl text-white drop-shadow-lg">Feliz San Valentín</h1>
+        <p class="text-xl text-white mt-4">Te deseo un día lleno de amor y felicidad 💖</p>
+        <button id="btnLove" class="mt-6 px-6 py-3 bg-white text-pink-500 rounded-full shadow-lg text-lg font-bold">
+            Un Mensaje Especial
+        </button>
+        <div id="heartContainer" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
+    </div>
+
+    <script>
+        document.getElementById('btnLove').addEventListener('click', function() {
+            window.location.href = 'mensaje.html';
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💖';
+            heart.style.position = 'absolute';
+            heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+            heart.style.top = Math.random() * window.innerHeight + 'px';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.opacity = 0;
+            document.getElementById('heartContainer').appendChild(heart);
+            gsap.to(heart, { opacity: 1, y: -50, duration: 2, ease: 'power1.out', onComplete: () => heart.remove() });
+        }
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>

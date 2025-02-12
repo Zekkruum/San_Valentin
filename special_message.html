@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje Especial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            font-family: Arial, sans-serif;
+        }
+        .mensaje {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen text-center">
+    <h1 class="text-4xl text-white mb-4">Un Mensaje Para Ti</h1>
+    <p id="mensaje" class="mensaje text-xl text-black max-w-lg p-4 border-2 border-pink-500 rounded-lg shadow-lg bg-white text-pink-500">
+        "Cada día a tu lado es un regalo, una melodía que ilumina mi vida. Que este mensaje sea un reflejo de lo especial que eres para mí."
+    </p>
+    
+    <script>
+        gsap.to(".mensaje", { opacity: 1, duration: 2, ease: "power2.out" });
+
+        let input = "";
+        const canciones = {
+            "no te imaginas": "https://www.youtube.com/watch?v=9e7_MzTR8oE&list=OLAK5uy_mSkG3lzdjlU5GTv1QxOp6Amt-6m5CTVMs&index=7",
+            "lunares": "https://www.youtube.com/watch?v=vYyD1PUQYys",
+            "alguien como tu": "https://www.youtube.com/watch?v=J8NrkPLDi_k"
+        };
+
+        document.addEventListener("keydown", function(event) {
+            input += event.key.toLowerCase();
+            Object.keys(canciones).forEach(cancion => {
+                if (input.includes(cancion)) {
+                    window.location.href = canciones[cancion];
+                }
+            });
+            if (input.length > 20) input = input.slice(-20);
+        });
+    </script>
+</body>
+</html>
