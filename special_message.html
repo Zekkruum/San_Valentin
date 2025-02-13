@@ -43,11 +43,16 @@ ATT: Juan C."
             "por ti": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         };
 
+        function resetInput() {
+            input = "";
+        }
+
         document.addEventListener("keydown", function(event) {
             input += event.key.toLowerCase();
             Object.keys(canciones).forEach(cancion => {
                 if (input.includes(cancion)) {
                     window.location.href = canciones[cancion];
+                    setTimeout(resetInput, 3000); // Restablecer después de 3s
                 }
             });
             if (input.length > 20) input = input.slice(-20);
@@ -63,6 +68,7 @@ ATT: Juan C."
             Object.keys(canciones).forEach(cancion => {
                 if (userInput.includes(cancion)) {
                     window.location.href = canciones[cancion];
+                    setTimeout(() => event.target.value = "", 3000); // Resetear input
                 }
             });
         });
