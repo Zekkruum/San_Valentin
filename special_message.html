@@ -14,6 +14,11 @@
         .mensaje {
             opacity: 0;
         }
+        .hidden-input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen text-center">
@@ -24,6 +29,8 @@
 TE QUIERO MUCHO 
 ATT: Juan C."
     </p>
+    
+    <input type="text" id="hiddenInput" class="hidden-input" autocomplete="off">
     
     <script>
         gsap.to(".mensaje", { opacity: 1, duration: 2, ease: "power2.out" });
@@ -47,8 +54,17 @@ ATT: Juan C."
         });
 
         document.addEventListener("touchstart", function() {
-            let randomSong = Object.values(canciones)[Math.floor(Math.random() * Object.values(canciones).length)];
-            window.location.href = randomSong;
+            let hiddenInput = document.getElementById("hiddenInput");
+            hiddenInput.focus();
+        });
+
+        document.getElementById("hiddenInput").addEventListener("input", function(event) {
+            let userInput = event.target.value.toLowerCase();
+            Object.keys(canciones).forEach(cancion => {
+                if (userInput.includes(cancion)) {
+                    window.location.href = canciones[cancion];
+                }
+            });
         });
     </script>
 </body>
