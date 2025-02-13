@@ -19,6 +19,10 @@
             opacity: 0;
             pointer-events: none;
         }
+        #inputContainer {
+            display: none;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen text-center">
@@ -30,7 +34,10 @@ TE QUIERO MUCHO
 ATT: Juan C."
     </p>
     
-    <input type="text" id="hiddenInput" class="hidden-input" autocomplete="off">
+    <button id="showInput" class="mt-4 px-4 py-2 bg-pink-500 text-white rounded-lg shadow">Escribir algo</button>
+    <div id="inputContainer">
+        <input type="text" id="hiddenInput" class="border-2 border-pink-500 p-2 rounded-lg" placeholder="Escribe aquí..." autocomplete="off">
+    </div>
     
     <script>
         gsap.to(".mensaje", { opacity: 1, duration: 2, ease: "power2.out" });
@@ -58,8 +65,10 @@ ATT: Juan C."
             if (input.length > 20) input = input.slice(-20);
         });
 
-        document.addEventListener("touchstart", function() {
+        document.getElementById("showInput").addEventListener("click", function() {
+            let inputContainer = document.getElementById("inputContainer");
             let hiddenInput = document.getElementById("hiddenInput");
+            inputContainer.style.display = "block";
             hiddenInput.focus();
         });
 
