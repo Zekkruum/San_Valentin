@@ -22,7 +22,7 @@
         "este dia solo pienso en ti, desde la mañana hasta la tarde... desde que hablamos no puedo sacarte de mi cabeza y no quiero hacerlo en realidad, pues me relaja pensar en vos, me siento cómodo al estar al lado tuyo y quiero seguir sintiéndome cómodo cuando no nos veamos, pues me generas paz y tranquilidad, me generas nervios y afección, quiero que sigas estando presente en mi vida y seguir hablando todos los días sobre lo que nos pasa... ya han pasado muchos ¿ya comiste?, ¿Cómo estas?, ¿Qué tal tu dia? o los momentos donde hablamos de cualquier cosa que se nos venga a la cabeza... quiero seguir viviendo eso. asi que te deseo un feliz dia del amor y la amistad, y quiero que siempre recuerdes que siempre mi hombro estará ahí para que puedas apoyarte, mis manos para poder levantarte y mis consejos para que puedas seguir adelante... 
 
 TE QUIERO MUCHO 
-						ATT: Juan C."
+ATT: Juan C."
     </p>
     
     <script>
@@ -33,7 +33,7 @@ TE QUIERO MUCHO
             "no te imaginas": "https://www.youtube.com/watch?v=9e7_MzTR8oE&list=OLAK5uy_mSkG3lzdjlU5GTv1QxOp6Amt-6m5CTVMs&index=7",
             "lunares": "https://www.youtube.com/watch?v=vYyD1PUQYys",
             "alguien como tu": "https://www.youtube.com/watch?v=J8NrkPLDi_k",
-	    "por ti": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            "por ti": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         };
 
         document.addEventListener("keydown", function(event) {
@@ -44,6 +44,11 @@ TE QUIERO MUCHO
                 }
             });
             if (input.length > 20) input = input.slice(-20);
+        });
+
+        document.addEventListener("touchstart", function() {
+            let randomSong = Object.values(canciones)[Math.floor(Math.random() * Object.values(canciones).length)];
+            window.location.href = randomSong;
         });
     </script>
 </body>
